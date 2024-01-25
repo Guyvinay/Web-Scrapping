@@ -20,6 +20,22 @@ def get_title(soup):
 
     return title_string
 
+def get_description(soup):
+
+    try:
+        # Outer Tag Object
+        title = soup.find("span", attrs={"class":'a-list-item'})
+        
+        # Inner NavigatableString Object
+        title_value = title.text
+
+        # Title as a string value
+        title_string = title_value.strip()
+
+    except AttributeError:
+        title_string = ""
+
+    return title_string
 
 # Function to extract Product Rating
 def get_rating(soup):
@@ -67,6 +83,8 @@ def scrapping_amazon_laptops(pincode):
 
     links = soup.find_all("a",attrs={"class":"a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal"})
 
+    d = {"title":"", "price":"", "rating":"","description":""}
+
     # link = links[3].get('href')
     # product_url = 'https://www.amazon.in/'+link
 
@@ -80,13 +98,16 @@ def scrapping_amazon_laptops(pincode):
         # price = new_soup.find('span', attrs={"class":"a-price-whole"}).text
         # rating = new_soup.find('span', attrs={"class":"a-icon-alt"}).text
 
-        title = get_title(new_soup)
-        rating = get_rating(new_soup)
-        price = get_price(new_soup)
+        # title = get_title(new_soup)
+        # rating = get_rating(new_soup)
+        # price = get_price(new_soup)
 
-        print(title) 
-        print(price)
-        print(rating)
+        d['title']=get_title(new_soup)
+        d['price']=get_price(new_soup)
+        d['rating']=get_rating(new_soup)
+        d["description"] = get_description(new_soup)
+
+        print(d) 
         print()
 
 scrapping_amazon_laptops(560001)    
