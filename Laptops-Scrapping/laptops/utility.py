@@ -4,19 +4,20 @@ from statics import HEADERS
 
 def scrapHtmlFromSite(url):
     
-    response = requests.get(url, headers=HEADERS)
-    if response.status_code == 200 :
+    try:
+        response = requests.get(url, headers=HEADERS)
+        response.raise_for_status()  # Raise an exception for non-200 status codes
         return response
-    else :
-        print(f"Failed Scrapping {url}")
+    except requests.RequestException as e:
+        print(f"Failed to scrape {url}: {e}")
         return None
-    # try:
-    #     response = requests.get(url, HEADERS)
-    #     print(response)
-    #     return response.text
-    # except requests.exceptions.RequestException as e:
-    #     print(f"Failed to fetch HTML content from {url}: {e}")
-    #     return None
 
 def parseHtmlWithBeautifulSoupe(html) :
-    return BeautifulSoup(html.content, 'html.parser')
+    try:
+        if html:
+            return BeautifulSoup(html.content, 'html.parser')
+        else:
+            return None
+    except Exception as e:
+        print(f"Failed to parse HTML content: {e}")
+        return None

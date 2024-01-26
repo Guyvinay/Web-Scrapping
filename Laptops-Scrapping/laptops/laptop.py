@@ -12,3 +12,10 @@ class Laptop :
         self.brandName = brandName
         self.imageUrl = imageUrl
         self.specifications = specifications
+
+class Product :
+    def __init__(self, title,price,rating, description ):
+        self.title = title
+        self.description = description
+        self.price = price
+        self.rating= rating      
