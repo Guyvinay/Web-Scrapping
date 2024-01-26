@@ -52,16 +52,22 @@ class Scrapper :
     def getBrand(self, soup):
 
         try:
-            brand = soup.find('div', attrs={'class':'a-section a-spacing-small a-spacing-top-small'}).find('table',attrs={'class':'a-normal a-spacing-micro'}).find('tr', attrs={'class':'a-spacing-small po-brand'}).find('span',attrs={'class':'a-size-base po-break-word'}).string.strip()
+            #Getting row of specs and values(tr)
+            rows = soup.find("div", attrs={'class':'a-expander-content a-expander-section-content a-section-expander-inner'}).find('table', attrs={'id':'productDetails_techSpec_section_1'}).find_all('tr')
+
+            #Iterating through each row
+            for row in rows :
+
+                th = row.find('th')
+                #Checking if th contains Weight
+                if th and th.text.strip() == 'Brand' :
+
+                    #with tr getting value of Item Weight
+                    brand = row.find('td').text.strip()
 
         except AttributeError:
-
-            try:
-                # Secondary Script
-                brand = soup.find('div', attrs={'class':'a-section a-spacing-small a-spacing-top-small'}).find('table',attrs={'class':'a-normal a-spacing-micro'}).find('tr', attrs={'class':'a-spacing-small po-brand'}).find('span',attrs={'class':'a-size-base po-break-word'}).string.strip()
-
-            except:
-                brand = ""
+                
+            brand = ""
 
         return brand
     
@@ -139,7 +145,7 @@ class Scrapper :
 
                     #with tr getting value of Item Weight
                     weight = row.find('td').text.strip()
-                    
+
         except AttributeError:
                 
             weight = ""
@@ -196,7 +202,7 @@ class Scrapper :
                 # rating = self.getRating(new_soup)
                 # discount = self.getDiscount(new_soup)
                 # description = self.getCategory(new_soup)
-                # brand = self.getBrand(new_soup)
+                brand = self.getBrand(new_soup)
                 # model = self.getModel(new_soup)
                 # mrp = self.getMarketRetailPrice(new_soup)
                 weight = self.getWeight(new_soup)
@@ -206,7 +212,7 @@ class Scrapper :
                 # print(discount)
                 # print(rating)
                 # print(description)
-                # print(brand)
+                print(brand)
                 # print(model)
                 # print(mrp)
                 print(weight)
