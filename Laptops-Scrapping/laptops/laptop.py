@@ -14,7 +14,7 @@ class Laptop :
         self.specifications = specifications
 
 class Product :
-    def __init__(self, title,price,rating, description ):
+    def __init__(self, title, price,rating, description ):
         self.title = title
         self.description = description
         self.price = price

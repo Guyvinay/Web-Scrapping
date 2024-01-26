@@ -14,46 +14,35 @@ class Scrapper :
 
         try:
             # Outer Tag Object
-            title = soup.find("span", attrs={"id":'productTitle'})
-            
-            # Inner NavigatableString Object
-            title_value = title.text
-
-            # Title as a string value
-            title_string = title_value.strip()
+            title = soup.find("div", attrs={"id":'title_feature_div'}).find('div', attrs={'id':'titleSection'}).find('h1', attrs={'id':'title'}).text.strip()
 
         except AttributeError:
-            title_string = ""
+            title = ""
 
-        return title_string
+        return title
     
     #Getting description from soupe
-    def getDescription(self, soup):
+    def getCategory(self, soup):
 
         try:
             # Outer Tag Object
-            title = soup.find("span", attrs={"class":'a-list-item'})
-            
-            # Inner NavigatableString Object
-            title_value = title.text
-
-            # Title as a string value
-            title_string = title_value.strip()
+            category = soup.find("span", attrs={"class":'a-list-item'}).text.strip()
 
         except AttributeError:
-            title_string = ""
+            category = ""
 
-        return title_string
+        return category
 
     # Function to extract Product Rating
     def getRating(self, soup):
 
         try:
-            rating = soup.find("i", attrs={'class':'a-icon a-icon-star a-star-4 cm-cr-review-stars-spacing-big'}).string.strip()
+            rating = soup.find("div", attrs={'id':'averageCustomerReviews'}).find('i', attrs={'class':'a-icon a-icon-star a-star-4 cm-cr-review-stars-spacing-big'}).text.strip()
         
         except AttributeError:
             try:
-                rating = soup.find("span", attrs={'class':'a-icon-alt'}).string.strip()
+                #Secondary
+                rating = soup.find("i", attrs={'class':'a-icon a-icon-star a-star-4 cm-cr-review-stars-spacing-big'}).string.strip()
             except:
                 rating = ""	
 
@@ -63,38 +52,101 @@ class Scrapper :
     def getBrand(self, soup):
 
         try:
-            price = soup.find("span", attrs={'class':'a-offscreen'}).string.strip()
+            brand = soup.find('div', attrs={'class':'a-section a-spacing-small a-spacing-top-small'}).find('table',attrs={'class':'a-normal a-spacing-micro'}).find('tr', attrs={'class':'a-spacing-small po-brand'}).find('span',attrs={'class':'a-size-base po-break-word'}).string.strip()
 
         except AttributeError:
 
             try:
-                # If there is some deal price
-                price = soup.find("span", attrs={'id':'a-offscreen'}).string.strip()
+                # Secondary Script
+                brand = soup.find('div', attrs={'class':'a-section a-spacing-small a-spacing-top-small'}).find('table',attrs={'class':'a-normal a-spacing-micro'}).find('tr', attrs={'class':'a-spacing-small po-brand'}).find('span',attrs={'class':'a-size-base po-break-word'}).string.strip()
 
             except:
-                price = ""
+                brand = ""
 
-        return price
+        return brand
     
-        # Function to extract Product Price
-   
-    def getPrice(self, soup):
+    def getModel(self, soup):
+
+        try:
+            model = soup.find('div', attrs={'class':'a-section a-spacing-small a-spacing-top-small'}).find('table',attrs={'class':'a-normal a-spacing-micro'}).find('tr', attrs={'class':'a-spacing-small po-model_name'}).find('span',attrs={'class':'a-size-base po-break-word'}).string.strip()
+
+        except AttributeError:
+
+            try:
+                # Secondary Script
+                model = soup.find('div', attrs={'class':'a-section a-spacing-small a-spacing-top-small'}).find('table',attrs={'class':'a-normal a-spacing-micro'}).find('tr', attrs={'class':'a-spacing-small po-model_name'}).find('span',attrs={'class':'a-size-base po-break-word'}).string.strip()
+
+            except:
+                model = ""
+
+        return model
+
+    # Function to extract Product Price
+    def getSellingPrice(self, soup):
 
         try:
             price = soup.find("span", attrs={'class':'a-offscreen'}).string.replace('₹', '').strip()
-
+            
         except AttributeError:
 
             try:
-                # If there is some deal price
-                price = soup.find("span", attrs={'id':'a-offscreen'}).string.replace('₹', '').strip()
+                # Secondary attributes after getting exception in first one
+                price = soup.find("span", attrs={'class':'a-offscreen'}).string.replace('₹', '').strip()
 
             except:
                 price = ""
 
         return price
     
+    def getMarketRetailPrice(self, soup):
 
+        try:
+            price = soup.find("div", attrs={'class':'a-section a-spacing-small aok-align-center'}).find('span', attrs={'class':'a-price a-text-price'}).find('span', attrs={'class':'a-offscreen'}).string.replace('₹', '').strip()
+
+        except AttributeError:
+
+            try:
+                # If there is some deal price
+                price = soup.find("div", attrs={'class':'a-section a-spacing-small aok-align-center'}).find('span', attrs={'class':'a-price a-text-price'}).find('span', attrs={'class':'a-offscreen'}).string.replace('₹', '').strip()
+
+            except:
+                price = ""
+
+        return price
+    
+    def getDiscount(self, soup):
+
+        try:
+            discount = soup.find("div", attrs={'id':'corePriceDisplay_desktop_feature_div'}).find('span', attrs={'class':'a-size-large a-color-price savingPriceOverride aok-align-center reinventPriceSavingsPercentageMargin savingsPercentage'}).text.strip()
+
+        except AttributeError:
+                
+            discount = ""
+
+        return discount
+    
+    def getWeight(self, soup):
+        try:
+            #Getting row of specs and values(tr)
+            rows = soup.find("div", attrs={'class':'a-expander-content a-expander-section-content a-section-expander-inner'}).find('table', attrs={'id':'productDetails_techSpec_section_1'}).find_all('tr')
+
+            #Iterating through each row
+            for row in rows :
+
+                th = row.find('th')
+                #Checking if th contains Weight
+                if th and th.text.strip() == 'Item Weight' :
+
+                    #with tr getting value of Item Weight
+                    weight = row.find('td').text.strip()
+                    
+        except AttributeError:
+                
+            weight = ""
+
+        return weight
+    
+    
 
     #Primary Function to exctract Laptps
     def laptops_scrapping(self):
@@ -107,6 +159,8 @@ class Scrapper :
 
             #Url containing Pincode
             url = f"{SEARCH_URL}&pincode={pincode}"
+
+            print(url)
 
             #Creating instance of Gzip to store laptops in gzip and Json file
             gZip = Gzip()
@@ -137,16 +191,31 @@ class Scrapper :
                 #Getting Soup for each laptop
                 new_soup = parseHtmlWithBeautifulSoupe(new_webpage)
 
-                title = self.getTitle(new_soup)
-                price = self.getPrice(new_soup)
-                rating = self.getRating(new_soup)
-                description = self.getDescription(new_soup)
+                # title = self.getTitle(new_soup)
+                # sellingPrice = self.getSellingPrice(new_soup)
+                # rating = self.getRating(new_soup)
+                # discount = self.getDiscount(new_soup)
+                # description = self.getCategory(new_soup)
+                # brand = self.getBrand(new_soup)
+                # model = self.getModel(new_soup)
+                # mrp = self.getMarketRetailPrice(new_soup)
+                weight = self.getWeight(new_soup)
 
-                laptop = Product(title, price, rating, description)
+                # print(title)
+                # print(sellingPrice)
+                # print(discount)
+                # print(rating)
+                # print(description)
+                # print(brand)
+                # print(model)
+                # print(mrp)
+                print(weight)
+                print()
+                # laptop = Product(title, price, rating, description)
 
-                laptops.append(laptop)
+                # laptops.append(laptop)
 
-                gZip.saveToGzip(laptops, city)
+                # gZip.saveToGzip(laptops, city)
 
     #Run the main laptops_scrapping() function by Scrapper().runScrapper()
     def runScrapper(self):

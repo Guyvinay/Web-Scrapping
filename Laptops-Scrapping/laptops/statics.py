@@ -3,13 +3,13 @@
 SEARCH_URL = "https://www.amazon.in/s?k=laptops"
 
 # Pin codes
-PINCODES = {
-    "Bangalore": "560001",
-    "Delhi": "110001"
-}
 # PINCODES = {
-#     "Bangalore": "560001"
+#     "Bangalore": "560001",
+#     "Delhi": "110001"
 # }
+PINCODES = {
+    "Bangalore": "560001"
+}
 
 #Headers for request to be seen as a Users request.
 HEADERS = {
