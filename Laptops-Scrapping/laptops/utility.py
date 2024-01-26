@@ -6,10 +6,10 @@ def scrapHtmlFromSite(url):
     
     try:
         response = requests.get(url, headers=HEADERS)
-        response.raise_for_status()  # Raise an exception for non-200 status codes
+        response.raise_for_status()
         return response
     except requests.RequestException as e:
-        print(f"Failed to scrape {url}: {e}")
+        print(f"Failed to scrape {url}:")
         return None
 
 def parseHtmlWithBeautifulSoupe(html) :
@@ -19,5 +19,5 @@ def parseHtmlWithBeautifulSoupe(html) :
         else:
             return None
     except Exception as e:
-        print(f"Failed to parse HTML content: {e}")
+        print(f"Failed to parse HTML content:")
         return None

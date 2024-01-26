@@ -11,7 +11,7 @@ PINCODES = {
 #     "Bangalore": "560001"
 # }
 
-#Headers for result like User specific.
+#Headers for request to be seen as a Users request.
 HEADERS = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         }

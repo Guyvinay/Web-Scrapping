@@ -3,6 +3,7 @@ from utility import scrapHtmlFromSite, parseHtmlWithBeautifulSoupe
 from laptop import Laptop, Product
 from gzips import Gzip
 
+#Scrapper class: Scrapping Laptop data from Amazon.in
 class Scrapper :
 
     def __init__(self):

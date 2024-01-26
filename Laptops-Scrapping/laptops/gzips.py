@@ -19,14 +19,18 @@ class Gzip :
         laptop_lists = []
         for laptop in laptops:
 
+            #Creating dictionary of Laptop object
             laptop_dict = {
                 "title": laptop.title,
                 "price": laptop.price,
                 "rating": laptop.rating,
                 "description": laptop.description,
             }
-            print(laptop_dict)
 
+            print(laptop_dict)
+            print()
+
+            #Saving the laptop_dict t list
             laptop_lists.append(laptop_dict)
 
             # Save to ndjson format
@@ -34,6 +38,7 @@ class Gzip :
                 f.write(json.dumps(laptop_dict) + '\n') 
         
 
-        # Open the JSON file in write 'w' mode and write the data
+        # Open the JSON file in write 'w' mode and write the laptop_lists data
         with open(jsonFileName, 'w') as file:
             json.dump(laptop_lists, file, indent=4)
+#End of Persisting scrapped data in files            
