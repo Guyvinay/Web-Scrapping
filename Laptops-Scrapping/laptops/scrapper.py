@@ -21,6 +21,7 @@ class Scrapper :
 
         return title
     
+    # Function to extract Laptop Name
     def getName(self, soup):
 
         name = ""
@@ -46,7 +47,6 @@ class Scrapper :
 
         return name
    
-
     #Getting title from soupe
     def getImageUrl(self, soup):
 
@@ -59,7 +59,6 @@ class Scrapper :
 
         return imageUrl
     
-
     #Getting Category from soupe
     def getCategory(self, soup):
 
@@ -85,7 +84,7 @@ class Scrapper :
 
         return category
 
-    #Getting countryOfOrigin from soupe
+    # Function to extract Laptop getCountryOfOrigin
     def getCountryOfOrigin(self, soup):
         countryOfOrigin=""
         try:
@@ -108,6 +107,7 @@ class Scrapper :
 
         return countryOfOrigin
     
+    # Function to extract Laptop Specifications
     def getSpecifications(self, soup):
 
         specs=""
@@ -148,7 +148,7 @@ class Scrapper :
 
         return rating
 
-    # Function to extract Product Price
+    # Function to extract laptop Brand
     def getBrand(self, soup):
 
         brand=""
@@ -196,7 +196,7 @@ class Scrapper :
 
         return id
     
-
+    # Function to extract Laptop Model
     def getModel(self, soup):
 
         try:
@@ -213,7 +213,7 @@ class Scrapper :
 
         return model
 
-    # Function to extract Product Price
+    # Function to extract Laptop Selliing Price
     def getSellingPrice(self, soup):
 
         try:
@@ -230,6 +230,7 @@ class Scrapper :
 
         return price
     
+    # Function to extract Laptop MRP
     def getMarketRetailPrice(self, soup):
 
         try:
@@ -246,6 +247,7 @@ class Scrapper :
 
         return price
     
+    # Function to extract Laptop Discount
     def getDiscount(self, soup):
 
         try:
@@ -257,6 +259,7 @@ class Scrapper :
 
         return discount
     
+    # Function to extract Laptop Weight
     def getWeight(self, soup):
         weight=""
         try:
@@ -279,8 +282,6 @@ class Scrapper :
 
         return weight
     
-    
-
     #Primary Function to exctract Laptps
     def laptops_scrapping(self):
 
@@ -292,8 +293,6 @@ class Scrapper :
 
             #Url containing Pincode
             url = f"{SEARCH_URL}&pincode={pincode}"
-
-            print(url)
 
             #Creating instance of Gzip to store laptops in gzip and Json file
             gZip = Gzip()
@@ -312,9 +311,6 @@ class Scrapper :
                     "class":"a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal"
                 })
 
-            d = {"title":"", "price":"", "rating":"","description":""}
-
-
             #Iterating through the Link and getting each laptop details
             for link in links :
 
@@ -324,6 +320,8 @@ class Scrapper :
                 #Getting Soup for each laptop
                 new_soup = parseHtmlWithBeautifulSoupe(new_webpage)
 
+
+                #Assigning values to laptop attributes
                 title = self.getTitle(new_soup)
                 sellingPrice = self.getSellingPrice(new_soup)
                 rating = self.getRating(new_soup)
@@ -339,10 +337,13 @@ class Scrapper :
                 id = self.getId(new_soup)
                 name = self.getName(new_soup)
 
+                #Creating Instance of Laptop passing attributes
                 laptop = Laptop(id, name, title, model, "", category, mrp, sellingPrice, discount, weight, brand, imageUrl, specifications, rating, countryOfOrigin)
 
+                #appending laptop instance to list
                 laptops.append(laptop)
 
+                #Sending list of laptops to persist to JSON and ndjson file 
                 gZip.saveToGzip(laptops, city)
 
     #Run the main laptops_scrapping() function by Scrapper().runScrapper()
