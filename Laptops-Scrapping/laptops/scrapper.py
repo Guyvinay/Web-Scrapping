@@ -21,6 +21,32 @@ class Scrapper :
 
         return title
     
+    def getName(self, soup):
+
+        name = ""
+
+        try:
+            #Getting row of specs and values(tr)
+            rows = soup.find("div", attrs={'class':'a-expander-content a-expander-section-content a-section-expander-inner'}).find('table', attrs={'id':'productDetails_techSpec_section_1'}).find_all('tr')
+
+            #Iterating through each row
+            for row in rows :
+
+                th = row.find('th')
+                #Checking if th contains Weight
+                if th :
+
+                    if  th.text.strip() == 'Series' or  th.text.strip() == 'Model':
+                        #with tr getting value of Item Weight
+                        name = row.find('td').text.replace('\u200e', '').strip()
+
+        except AttributeError:
+                
+            name = ""
+
+        return name
+   
+
     #Getting title from soupe
     def getImageUrl(self, soup):
 
@@ -37,6 +63,8 @@ class Scrapper :
     #Getting Category from soupe
     def getCategory(self, soup):
 
+        category=""
+
         try:
             #Getting row of specs and values(tr)
             rows = soup.find("div", attrs={'class':'a-expander-content a-expander-section-content a-section-expander-inner'}).find('table', attrs={'id':'productDetails_techSpec_section_1'}).find_all('tr')
@@ -49,7 +77,7 @@ class Scrapper :
                 if th and th.text.strip() == 'Form Factor' :
 
                     #with tr getting value of Item Weight
-                    category = row.find('td').text.strip()
+                    category = row.find('td').text.replace('\u200e', '').strip()
 
         except AttributeError:
                 
@@ -59,7 +87,7 @@ class Scrapper :
 
     #Getting countryOfOrigin from soupe
     def getCountryOfOrigin(self, soup):
-
+        countryOfOrigin=""
         try:
             #Getting row of specs and values(tr)
             rows = soup.find("div", attrs={'class':'a-expander-content a-expander-section-content a-section-expander-inner'}).find('table', attrs={'id':'productDetails_techSpec_section_1'}).find_all('tr')
@@ -72,7 +100,7 @@ class Scrapper :
                 if th and th.text.strip() == 'Country of Origin' :
 
                     #with tr getting value of Item Weight
-                    countryOfOrigin = row.find('td').text.strip()
+                    countryOfOrigin = row.find('td').text.replace('\u200e', '').strip()
 
         except AttributeError:
                 
@@ -97,7 +125,7 @@ class Scrapper :
                     if th.text.strip() == 'Processor Brand' or th.text.strip() == 'Processor Type' or th.text.strip() == 'Screen Resolution' or  th.text.strip() == 'Processor Speed'  or th.text.strip() == 'RAM Size' or th.text.strip() == 'Hard Drive Size'  or th.text.strip() == 'Operating System' or th.text.strip() == 'Connector Type' or th.text.strip() == 'Memory Technology'    :
 
                         #with tr getting value of Item Weight
-                        specs = specs+row.find('td').text.strip()+", "
+                        specs = specs+row.find('td').text.replace('\u200e', '').strip()+", "
 
         except AttributeError:
                 
@@ -123,6 +151,8 @@ class Scrapper :
     # Function to extract Product Price
     def getBrand(self, soup):
 
+        brand=""
+
         try:
             #Getting row of specs and values(tr)
             rows = soup.find("div", attrs={'class':'a-expander-content a-expander-section-content a-section-expander-inner'}).find('table', attrs={'id':'productDetails_techSpec_section_1'}).find_all('tr')
@@ -135,7 +165,7 @@ class Scrapper :
                 if th and th.text.strip() == 'Brand' :
 
                     #with tr getting value of Item Weight
-                    brand = row.find('td').text.strip()
+                    brand = row.find('td').text.replace('\u200e', '').strip()
 
         except AttributeError:
                 
@@ -143,6 +173,30 @@ class Scrapper :
 
         return brand
     
+    # Function to extract Product Price
+    def getId(self, soup):
+
+        try:
+            #Getting row of specs and values(tr)
+            rows = soup.find("div", attrs={'class':'a-section table-padding'}).find('table', attrs={'id':'productDetails_detailBullets_sections1'}).find_all('tr')
+
+            #Iterating through each row
+            for row in rows :
+
+                th = row.find('th')
+                #Checking if th contains Weight
+                if th and th.text.strip() == 'ASIN' :
+
+                    #with tr getting value of Item ASIN
+                    id = row.find('td').text.strip()
+
+        except AttributeError:
+                
+            id = ""
+
+        return id
+    
+
     def getModel(self, soup):
 
         try:
@@ -204,6 +258,7 @@ class Scrapper :
         return discount
     
     def getWeight(self, soup):
+        weight=""
         try:
             #Getting row of specs and values(tr)
             rows = soup.find("div", attrs={'class':'a-expander-content a-expander-section-content a-section-expander-inner'}).find('table', attrs={'id':'productDetails_techSpec_section_1'}).find_all('tr')
@@ -216,7 +271,7 @@ class Scrapper :
                 if th and th.text.strip() == 'Item Weight' :
 
                     #with tr getting value of Item Weight
-                    weight = row.find('td').text.strip()
+                    weight = row.find('td').text.replace('\u200e', '').strip()
 
         except AttributeError:
                 
@@ -269,37 +324,26 @@ class Scrapper :
                 #Getting Soup for each laptop
                 new_soup = parseHtmlWithBeautifulSoupe(new_webpage)
 
-                # title = self.getTitle(new_soup)
-                # sellingPrice = self.getSellingPrice(new_soup)
-                # rating = self.getRating(new_soup)
-                # discount = self.getDiscount(new_soup)
-                # category = self.getCategory(new_soup)
-                # brand = self.getBrand(new_soup)
-                # model = self.getModel(new_soup)
-                # mrp = self.getMarketRetailPrice(new_soup)
-                # weight = self.getWeight(new_soup)
-                # countryOfOrigin = self.getCountryOfOrigin(new_soup)
-                # specifications = self.getSpecifications(new_soup)
+                title = self.getTitle(new_soup)
+                sellingPrice = self.getSellingPrice(new_soup)
+                rating = self.getRating(new_soup)
+                discount = self.getDiscount(new_soup)
+                category = self.getCategory(new_soup)
+                brand = self.getBrand(new_soup)
+                model = self.getModel(new_soup)
+                mrp = self.getMarketRetailPrice(new_soup)
+                weight = self.getWeight(new_soup)
+                countryOfOrigin = self.getCountryOfOrigin(new_soup)
+                specifications = self.getSpecifications(new_soup)
                 imageUrl = self.getImageUrl(new_soup)
+                id = self.getId(new_soup)
+                name = self.getName(new_soup)
 
-                # print(title)
-                # print(sellingPrice)
-                # print(discount)
-                # print(rating)
-                # print(category)
-                # print(brand)
-                # print(model)
-                # print(mrp)
-                # print(weight)
-                # print(countryOfOrigin)
-                # print(specifications)
-                print(imageUrl)
-                print()
-                # laptop = Product(title, price, rating, description)
+                laptop = Laptop(id, name, title, model, "", category, mrp, sellingPrice, discount, weight, brand, imageUrl, specifications, rating, countryOfOrigin)
 
-                # laptops.append(laptop)
+                laptops.append(laptop)
 
-                # gZip.saveToGzip(laptops, city)
+                gZip.saveToGzip(laptops, city)
 
     #Run the main laptops_scrapping() function by Scrapper().runScrapper()
     def runScrapper(self):

@@ -1,8 +1,9 @@
 class Laptop :
-    def __init__(self, id, name, title, description, category, mrp, sellingPrice, discount, weight, brandName, imageUrl, specifications):
+    def __init__(self, id, name, title, model , description, category, mrp, sellingPrice, discount, weight, brandName, imageUrl, specifications, rating, countryOfOrigin):
         self.id = id
         self.name = name
         self.title = title
+        self.model = model
         self.description = description
         self.category = category
         self.mrp = mrp
@@ -12,6 +13,8 @@ class Laptop :
         self.brandName = brandName
         self.imageUrl = imageUrl
         self.specifications = specifications
+        self.rating = rating
+        self.countryOfOrigin = countryOfOrigin
 
 class Product :
     def __init__(self, title, price,rating, description ):

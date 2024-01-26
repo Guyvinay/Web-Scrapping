@@ -17,14 +17,24 @@ class Gzip :
 
         # Convert Laptop objects to list dictionary
         laptop_lists = []
-        for laptop in laptops:
-
+        for laptop in laptops:          
             #Creating dictionary of Laptop object
             laptop_dict = {
+                "id":laptop.id,
+                "name":laptop.name,
                 "title": laptop.title,
-                "price": laptop.price,
-                "rating": laptop.rating,
+                "model": laptop.model,
                 "description": laptop.description,
+                "category": laptop.category,
+                "mrp": laptop.mrp,
+                "sellingPrice":laptop.sellingPrice,
+                "discount":laptop.discount,
+                "weight":laptop.weight,
+                "brandName": laptop.brandName,
+                "imageUrl": laptop.imageUrl,
+                "specifications": laptop.specifications,
+                "rating": laptop.rating,
+                "countryOfOrigin": laptop.countryOfOrigin,
             }
 
             print(laptop_dict)
