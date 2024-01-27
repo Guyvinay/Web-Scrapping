@@ -1,6 +1,6 @@
-from statics import PINCODES, SEARCH_URL, MIN_CART_VALUE, HEADERS
+from statics import PINCODES, SEARCH_URL,SCRAP_DATA_UPTO_PAGES
 from utility import scrapHtmlFromSite, parseHtmlWithBeautifulSoupe
-from laptop import Laptop, Product
+from laptop import Laptop
 from gzips import Gzip
 
 #Scrapper class: Scrapping Laptop data from Amazon.in
@@ -175,7 +175,7 @@ class Scrapper :
     
     # Function to extract Product Price
     def getId(self, soup):
-
+        id=""
         try:
             #Getting row of specs and values(tr)
             rows = soup.find("div", attrs={'class':'a-section table-padding'}).find('table', attrs={'id':'productDetails_detailBullets_sections1'}).find_all('tr')
@@ -291,60 +291,66 @@ class Scrapper :
         #Iterating cities
         for city, pincode in PINCODES.items() :
 
-            #Url containing Pincode
-            url = f"{SEARCH_URL}&pincode={pincode}"
 
-            #Creating instance of Gzip to store laptops in gzip and Json file
-            gZip = Gzip()
+            #Iterating from 1 to SCRAP_DATA_UPTO_PAGES to get from multiple pages
+            for i in range(1,SCRAP_DATA_UPTO_PAGES):
 
-            # Making the HTTP request from Utility.py
-            webpage = scrapHtmlFromSite(url)
+                # https://www.amazon.in/s?k=laptops&page=2&pincode=560001
 
-            #Parsing webpage Html with BeautifulSoup from Utility
-            soup = parseHtmlWithBeautifulSoupe(webpage)
+                #Url containing Pincode
+                url = f"{SEARCH_URL}&page={i}&pincode={pincode}"
 
+                #Creating instance of Gzip to store laptops in gzip and Json file
+                gZip = Gzip()
 
-            #Getting Links for all the Laptops by find_all()
-            links = soup.find_all(
-                "a",
-                attrs={
-                    "class":"a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal"
-                })
+                # Making the HTTP request from Utility.py
+                webpage = scrapHtmlFromSite(url)
 
-            #Iterating through the Link and getting each laptop details
-            for link in links :
-
-                #Getting HTML for each Laptop
-                new_webpage = scrapHtmlFromSite('https://www.amazon.in'+link.get('href'))
-
-                #Getting Soup for each laptop
-                new_soup = parseHtmlWithBeautifulSoupe(new_webpage)
+                #Parsing webpage Html with BeautifulSoup from Utility
+                soup = parseHtmlWithBeautifulSoupe(webpage)
 
 
-                #Assigning values to laptop attributes
-                title = self.getTitle(new_soup)
-                sellingPrice = self.getSellingPrice(new_soup)
-                rating = self.getRating(new_soup)
-                discount = self.getDiscount(new_soup)
-                category = self.getCategory(new_soup)
-                brand = self.getBrand(new_soup)
-                model = self.getModel(new_soup)
-                mrp = self.getMarketRetailPrice(new_soup)
-                weight = self.getWeight(new_soup)
-                countryOfOrigin = self.getCountryOfOrigin(new_soup)
-                specifications = self.getSpecifications(new_soup)
-                imageUrl = self.getImageUrl(new_soup)
-                id = self.getId(new_soup)
-                name = self.getName(new_soup)
+                #Getting Links for all the Laptops by find_all()
+                links = soup.find_all(
+                    "a",
+                    attrs={
+                        "class":"a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal"
+                    })
 
-                #Creating Instance of Laptop passing attributes
-                laptop = Laptop(id, name, title, model, "", category, mrp, sellingPrice, discount, weight, brand, imageUrl, specifications, rating, countryOfOrigin)
+                #Iterating through the Link and getting each laptop details
+                for link in links :
 
-                #appending laptop instance to list
-                laptops.append(laptop)
+                    #Getting HTML for each Laptop
+                    new_webpage = scrapHtmlFromSite('https://www.amazon.in'+link.get('href'))
 
-                #Sending list of laptops to persist to JSON and ndjson file 
-                gZip.saveToGzip(laptops, city)
+                    #Getting Soup for each laptop
+                    new_soup = parseHtmlWithBeautifulSoupe(new_webpage)
+
+
+                    #Assigning values to laptop attributes
+                    title = self.getTitle(new_soup)
+                    sellingPrice = self.getSellingPrice(new_soup)
+                    rating = self.getRating(new_soup)
+                    discount = self.getDiscount(new_soup)
+                    category = self.getCategory(new_soup)
+                    brand = self.getBrand(new_soup)
+                    model = self.getModel(new_soup)
+                    mrp = self.getMarketRetailPrice(new_soup)
+                    weight = self.getWeight(new_soup)
+                    countryOfOrigin = self.getCountryOfOrigin(new_soup)
+                    specifications = self.getSpecifications(new_soup)
+                    imageUrl = self.getImageUrl(new_soup)
+                    id = self.getId(new_soup)
+                    name = self.getName(new_soup)
+
+                    #Creating Instance of Laptop passing attributes
+                    laptop = Laptop(id, name, title, model, "", category, mrp, sellingPrice, discount, weight, brand, imageUrl, specifications, rating, countryOfOrigin)
+
+                    #appending laptop instance to list
+                    laptops.append(laptop)
+
+                    #Sending list of laptops to persist to JSON and ndjson file 
+                    gZip.saveToGzip(laptops, city)
 
     #Run the main laptops_scrapping() function by Scrapper().runScrapper()
     def runScrapper(self):

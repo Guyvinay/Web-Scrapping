@@ -11,7 +11,7 @@ def scrapHtmlFromSite(url):
         response.raise_for_status()
         return response
     except requests.RequestException as e:
-        print(f"Failed to scrape {url}:")
+        print(f"Failed to scrape!!!!")
         return None
 
 # Function to parse the ByteCode in the form of HTML
