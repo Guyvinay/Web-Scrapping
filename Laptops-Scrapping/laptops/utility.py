@@ -1,8 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
 from statics import HEADERS
+from retrying import retry
+
 
 # Function to extract ByteCode of provided webpage
+#@retry decorator/annotation to call again after failure
+@retry(stop_max_attempt_number=2)
 def scrapHtmlFromSite(url):
     
     try:

@@ -311,14 +311,18 @@ class Scrapper :
 
 
                 #Getting Links for all the Laptops by find_all()
-                links = soup.find_all(
-                    "a",
-                    attrs={
-                        "class":"a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal"
-                    })
+                # links = soup.find_all(
+                #     "a",
+                #     attrs={
+                #         "class":"a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal"
+                #     })
+
+                links = soup.find_all("h2",attrs={"class":"a-size-mini a-spacing-none a-color-base s-line-clamp-2"})
 
                 #Iterating through the Link and getting each laptop details
-                for link in links :
+                for h2 in links :
+
+                    link = h2.find('a', attrs={'class':'a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal'})
 
                     #Getting HTML for each Laptop
                     new_webpage = scrapHtmlFromSite('https://www.amazon.in'+link.get('href'))
