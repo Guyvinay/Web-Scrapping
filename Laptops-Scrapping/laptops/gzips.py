@@ -37,8 +37,8 @@ class Gzip :
                 "countryOfOrigin": laptop.countryOfOrigin,
             }
 
-            # print(laptop_dict)
-            # print()
+            print(laptop_dict)
+            print()
 
             #Saving the laptop_dict t list
             laptop_lists.append(laptop_dict)

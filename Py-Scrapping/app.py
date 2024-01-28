@@ -57,36 +57,38 @@ def scrapping_amazon_laptops(pincode):
     url = f'https://www.amazon.in/s?k=laptop'
 
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_6_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/605.1.15',
     }
 
     # Make the HTTP request
     webpage = requests.get(url, headers=headers)
-
     soup = BeautifulSoup(webpage.content, "html.parser")
 
-    links = soup.find_all("a",attrs={"class":"a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal"})
-
+    # links = soup.find_all("a",attrs={"class":"a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal"})
+    links = soup.find_all("h2",attrs={"class":"a-size-mini a-spacing-none a-color-base s-line-clamp-2"})
     # link = links[3].get('href')
     # product_url = 'https://www.amazon.in/'+link
 
-    for link in links :
-        new_webpage = requests.get('https://www.amazon.in/'+link.get('href'), headers=headers)
+    for h2 in links :
+        link = h2.find('a', attrs={'class':'a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal'})
+        print('https://www.amazon.in'+link.get('href'))
+        print()
+        # new_webpage = requests.get('https://www.amazon.in/'+link.get('href'), headers=headers)
 
-        new_soup = BeautifulSoup(new_webpage.content, "html.parser")
+        # new_soup = BeautifulSoup(new_webpage.content, "html.parser")
 
 
         # title = new_soup.find('span', attrs={"id":"productTitle"}).text.strip()
         # price = new_soup.find('span', attrs={"class":"a-price-whole"}).text
         # rating = new_soup.find('span', attrs={"class":"a-icon-alt"}).text
 
-        title = get_title(new_soup)
-        rating = get_rating(new_soup)
-        price = get_price(new_soup)
+        # title = get_title(new_soup)
+        # rating = get_rating(new_soup)
+        # price = get_price(new_soup)
 
-        print(title) 
-        print(price)
-        print(rating)
-        print()
+        # print(title) 
+        # print(price)
+        # print(rating)
+        # print()
 
 scrapping_amazon_laptops(560001)    

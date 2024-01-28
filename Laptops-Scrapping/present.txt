@@ -1,0 +1,55 @@
+## Web Scraper for Amazon-IN Laptops
+
+### Introduction
+
+This web scraper is designed to extract laptop information from Amazon-IN based on the provided pin codes. It utilizes Python and various libraries such as BeautifulSoup for parsing HTML, Requests for making HTTP requests, and concurrent.futures for multithreading. The scraper follows object-oriented programming principles and is optimized for scalability and performance.
+
+### Scraping Logic
+
+1. **Fetching HTML**: The scraper sends HTTP requests to Amazon-IN's search page for laptops based on the provided pin codes.
+2. **Parsing HTML**: It uses BeautifulSoup to parse the HTML content and extract relevant information such as product name, SKU id, description, category, price, brand, image URL, and laptop specifications.
+3. **Data Mapping**: The extracted data is mapped with categories and subcategories to organize it effectively.
+4. **Handling Pagination**: The scraper handles cases where data is spread across multiple pages by navigating through pagination links.
+5. **Delivery Information**: It also extracts delivery fee and estimated delivery time for each pin code with a minimum cart value of ₹100.
+
+### Code Structure
+-laptops->
+- **`scraper.py`**: Main class containing the scraping logic.
+- **`utility.py`**: Utility functions for HTTP requests, data parsing, and logging.
+- **`statics.py`**: Constants such as URLs, pin codes, and minimum cart value.
+- **`laptop.py`**: Classes to represent scraped data entities.
+- **`main.py`**: Entry point to initiate the scraping process.
+- **`gzips.py`**: To persist the scrapped laptop data to JSON and NdJson files.
+
+
+Github:  https://github.com/Guyvinay/Web-Scrapping .
+
+### Additional Features
+: Scrapping laptop for required number of pages.
+: Persisting data in Json and gz files separately with city name for each.
+: Handling every kind of data un-availability 
+
+### Quality Control (QC) Measures
+
+- **Data Consistency Check**: Ensure consistency in extracted fields across different pages and pin codes.
+- **Null Checks**: Verify that all mandatory fields (SKU id, product name, etc.) are not null.
+- **Duplicate Detection**: Remove duplicate products from the final dataset.
+- **Delivery Information Validation**: Validate the extracted delivery fee and estimated delivery time against Amazon's official data.
+
+### Data Statistics
+
+- **Total Count per Pin Code/Location**: Provide the total count of laptops extracted for each pin code.
+- **Null and Not Null Stats**: Report the number of null values for each mandatory field to identify any data inconsistencies.
+
+### Challenges Faced
+
+1. **Anti-Scraping Mechanisms**: Amazon employs anti-scraping measures like CAPTCHA and IP blocking, requiring careful handling to avoid detection.
+2. **Dynamic Page Structure**: Amazon's page structure may change dynamically, necessitating frequent adjustments to the scraping logic.
+3. **Handling Asynchronous Operations**: Managing concurrent requests and parsing responses asynchronously while maintaining data integrity posed challenges.
+
+### Improvements and Optimizations
+
+1. **Dynamic Scraping Logic**: Implement adaptive scraping logic to handle variations in page structure more effectively.
+2. **Distributed Scraping**: Utilize distributed systems and proxies to distribute scraping tasks and prevent IP blocking.
+3. **Error Handling and Recovery**: Enhance error handling mechanisms to recover gracefully from errors and minimize data loss.
+4. **Performance Tuning**: Optimize resource utilization and parallel processing to improve scraping speed and efficiency.
