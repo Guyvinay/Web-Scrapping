@@ -11,7 +11,7 @@ class Scrapper :
 
     #Getting title from soupe
     def getTitle(self, soup):
-
+        title=""
         try:
             # Outer Tag Object
             title = soup.find("div", attrs={"id":'title_feature_div'}).find('div', attrs={'id':'titleSection'}).find('h1', attrs={'id':'title'}).text.strip()
@@ -316,8 +316,9 @@ class Scrapper :
                 #     attrs={
                 #         "class":"a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal"
                 #     })
-
-                links = soup.find_all("h2",attrs={"class":"a-size-mini a-spacing-none a-color-base s-line-clamp-2"})
+                if soup :
+                    links = soup.find_all("h2",attrs={"class":"a-size-mini a-spacing-none a-color-base s-line-clamp-2"})
+                else: return    
 
                 #Iterating through the Link and getting each laptop details
                 for h2 in links :

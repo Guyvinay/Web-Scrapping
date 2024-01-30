@@ -13,7 +13,7 @@ class Gzip :
 
         # Define the filename for the JSON and ndjson files with city name
         jsonFileName = f'{city}.json'
-        gzFileName = f'{city}.ndjson.gz'
+        gzFileName = f'{city}.gzip'
 
         # Convert Laptop objects to list dictionary
         laptop_lists = []
