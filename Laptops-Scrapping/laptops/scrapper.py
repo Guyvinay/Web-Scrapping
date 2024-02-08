@@ -15,7 +15,6 @@ class Scrapper :
         try:
             # Outer Tag Object
             title = soup.find("div", attrs={"id":'title_feature_div'}).find('div', attrs={'id':'titleSection'}).find('h1', attrs={'id':'title'}).text.strip()
-
         except AttributeError:
             title = ""
 
@@ -23,9 +22,7 @@ class Scrapper :
     
     # Function to extract Laptop Name
     def getName(self, soup):
-
         name = ""
-
         try:
             #Getting row of specs and values(tr)
             rows = soup.find("div", attrs={'class':'a-expander-content a-expander-section-content a-section-expander-inner'}).find('table', attrs={'id':'productDetails_techSpec_section_1'}).find_all('tr')
@@ -42,14 +39,12 @@ class Scrapper :
                         name = row.find('td').text.replace('\u200e', '').strip()
 
         except AttributeError:
-                
             name = ""
-
         return name
    
     #Getting title from soupe
     def getImageUrl(self, soup):
-
+        imageUrl = ""
         try:
             # Outer Tag Object
             imageUrl = soup.find("div", attrs={"id":'imgTagWrapperId'}).find('img').get('src')
@@ -61,9 +56,7 @@ class Scrapper :
     
     #Getting Category from soupe
     def getCategory(self, soup):
-
         category=""
-
         try:
             #Getting row of specs and values(tr)
             rows = soup.find("div", attrs={'class':'a-expander-content a-expander-section-content a-section-expander-inner'}).find('table', attrs={'id':'productDetails_techSpec_section_1'}).find_all('tr')
@@ -79,7 +72,6 @@ class Scrapper :
                     category = row.find('td').text.replace('\u200e', '').strip()
 
         except AttributeError:
-                
             category = ""
 
         return category
@@ -100,18 +92,14 @@ class Scrapper :
 
                     #with tr getting value of Item Weight
                     countryOfOrigin = row.find('td').text.replace('\u200e', '').strip()
-
         except AttributeError:
-                
             countryOfOrigin = ""
 
         return countryOfOrigin
     
     # Function to extract Laptop Specifications
     def getSpecifications(self, soup):
-
         specs=""
-
         try:
             #Getting row of specs and values(tr)
             rows = soup.find("div", attrs={'class':'a-expander-content a-expander-section-content a-section-expander-inner'}).find('table', attrs={'id':'productDetails_techSpec_section_1'}).find_all('tr')
@@ -128,14 +116,12 @@ class Scrapper :
                         specs = specs+row.find('td').text.replace('\u200e', '').strip()+", "
 
         except AttributeError:
-                
             specs = ""
-
         return specs
 
     # Function to extract Product Rating
     def getRating(self, soup):
-
+        rating = ""
         try:
             rating = soup.find("div", attrs={'id':'averageCustomerReviews'}).find('i', attrs={'class':'a-icon a-icon-star a-star-4 cm-cr-review-stars-spacing-big'}).text.strip()
         
@@ -145,14 +131,11 @@ class Scrapper :
                 rating = soup.find("i", attrs={'class':'a-icon a-icon-star a-star-4 cm-cr-review-stars-spacing-big'}).string.strip()
             except:
                 rating = ""	
-
         return rating
 
     # Function to extract laptop Brand
     def getBrand(self, soup):
-
         brand=""
-
         try:
             #Getting row of specs and values(tr)
             rows = soup.find("div", attrs={'class':'a-expander-content a-expander-section-content a-section-expander-inner'}).find('table', attrs={'id':'productDetails_techSpec_section_1'}).find_all('tr')
@@ -168,7 +151,6 @@ class Scrapper :
                     brand = row.find('td').text.replace('\u200e', '').strip()
 
         except AttributeError:
-                
             brand = ""
 
         return brand
@@ -189,11 +171,8 @@ class Scrapper :
 
                     #with tr getting value of Item ASIN
                     id = row.find('td').text.strip()
-
         except AttributeError:
-                
             id = ""
-
         return id
     
     # Function to extract Laptop Model
