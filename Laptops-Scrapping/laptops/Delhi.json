@@ -1,0 +1,53 @@
+[
+    {
+        "id": "B0C15CDKTN",
+        "name": "Vostro 3510",
+        "title": "Dell 15 Laptop, Intel Core i5-1135G7 Processor/16GB DDR4/512GB SSD/Intel UHD Graphic/15.6\" (39.562cm) FHD Display/Win 11+MSO'21/15 Month McAfee/Spill-Resistant Keyboard/Carbon/Thin & Light 1.69kg",
+        "model": "Vostro 3510",
+        "description": "",
+        "category": "laptop",
+        "mrp": "66,349",
+        "sellingPrice": "47,990.00",
+        "discount": "-28%",
+        "weight": "1 kg 690 g",
+        "brandName": "Dell",
+        "imageUrl": "https://m.media-amazon.com/images/I/31O+bgku48L._SY300_SX300_.jpg",
+        "specifications": "1920*1080, Intel, Core i5, 2.4, 16 GB, DDR4, 512 GB, Windows 11 Home, ",
+        "rating": "",
+        "countryOfOrigin": "China"
+    },
+    {
+        "id": "B0C3R5VWP3",
+        "name": "Acer One 14 Z2-493",
+        "title": "Acer One 14 AMD Ryzen 3 3250U Processor (8GB RAM/512GB SSD/AMD Radeon Graphics/Windows 11 Home) Thin and Light Laptop Z2-493 with 35.56 cm (14.0\") HD Display",
+        "model": "Acer One 14 Z2-493",
+        "description": "",
+        "category": "laptop",
+        "mrp": "39,999",
+        "sellingPrice": "28,990.00",
+        "discount": "-28%",
+        "weight": "1 kg 500 g",
+        "brandName": "Acer",
+        "imageUrl": "https://m.media-amazon.com/images/I/41oXPIy+0mL._SY300_SX300_.jpg",
+        "specifications": "1366 x 768 pixel, AMD, Ryzen 3 3250U, 2.6 GHz, 8 GB, DDR4, Windows 11 Home, ",
+        "rating": "3.8 out of 5 stars",
+        "countryOfOrigin": "China"
+    },
+    {
+        "id": "B0BP2M7CCS",
+        "name": "15s-fq5007TU",
+        "title": "HP Laptop 15s, 12th Gen Intel Core i3-1215U, 15.6-inch (39.6 cm), FHD, 8GB DDR4, 512GB SSD, Intel UHD Graphics, Backlit KB, Thin & Light, Dual Speakers (Win 11, MSO 2021, Silver, 1.69 kg), fq5007TU",
+        "model": "15s-fq5007TU",
+        "description": "",
+        "category": "Netbook",
+        "mrp": "57,969.30",
+        "sellingPrice": "36,990.00",
+        "discount": "-36%",
+        "weight": "1 kg 690 g",
+        "brandName": "HP",
+        "imageUrl": "https://m.media-amazon.com/images/I/414nVwHlf9L._SX300_SY300_QL70_ML2_.jpg",
+        "specifications": "8 GB, 512 GB, Windows 11 Home, Intel, 4.4 GHz, Core i3, 1920 x 1080 pixel, Wi-Fi, USB, HDMI, ",
+        "rating": "4.1 out of 5 stars",
+        "countryOfOrigin": "China"
+    }
+]
