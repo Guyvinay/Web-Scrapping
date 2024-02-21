@@ -10,8 +10,8 @@ def main() :
 
     scraper.main_scraper()
 
-    data = persist.read_gzip_file()
-    print(data)
+    # data = persist.read_gzip_file()
+    # print(data)
 
 if __name__=='__main__' :
     main()

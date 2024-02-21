@@ -21,18 +21,26 @@ class Scraper :
         for rest in restaurants :
 
             restaurant_url = "https://food.grab.com"+rest.find('a').get('href')
-            # print(restaurant_url)
+
+            url_contains_id = rest.find('a').get('href')
+
+            # image = rest.find('a').find("div", attrs={"class":"placeholder___1xbBh"}).find("img")
+
+            # print(image)
+
             a_restaurant = runScrapperWithRequests(restaurant_url)
 
             a_restaurant_soup_content = parseContentWithBeautifulSoup(a_restaurant)
 
             merchant_info = a_restaurant_soup_content.find("div", attrs={"class":"merchantInfo___1GGGp"})
 
-            merchant_photo_wrapper = a_restaurant_soup_content.find("img", attrs={"class":"realImage___2TyNE"})
+            # photo = a_restaurant_soup_content.find("div", attrs={"class":"header___LAfE5"})
 
-            # print(merchant_photo_wrapper)
+            # print(photo)
+            restaurant_id = self.extract_restaurant_id(url_contains_id)
 
             restaurant_name = self.extract_restaurant_name(merchant_info)
+
             # print(restaurant_name)
             restaurant_cuisine = self.extract_restaurant_cuisine(merchant_info)
 
@@ -42,20 +50,22 @@ class Scraper :
 
             delivery_time = self.extract_delivery_time(merchant_info)
             
+            promotional_offers = self.extract_promotional_offers(merchant_info)
+
+            # restaurant_image = self.extract_restaurant_image(merchant_photo_wrapper)
+            
             restaurant_dictionary = {
-                "id":"restaurant.id",
+                "id":restaurant_id,
                 "restaurant_name":restaurant_name,
                 "restaurant_cuisine":restaurant_cuisine,
                 "restaurant_rating":restaurant_rating,
                 "distance_from_location":distance_from_location,
                 "delivery_time":delivery_time,
-                "promotional_offers":"promotional_offers",
+                "promotional_offers":promotional_offers,
                 "restaurant_image":"restaurant_image"
             }
 
-            # promotional_offers = self.extract_promotional_offers(merchant_info)
 
-            # restaurant_image = self.extract_restaurant_image(merchant_photo_wrapper)
 
             # restaurant_instance = Restaurant("", restaurant_name, restaurant_cuisine, restaurant_rating, delivery_time, distance_from_location, "promotional_offers", "restaurant_image")
 
@@ -76,6 +86,13 @@ class Scraper :
             # print(promotional_offers)
             # print(restaurant_image)
             # print(extracted_restaurants)
+
+    def extract_restaurant_id(self, url_contains_id) : 
+
+        id = url_contains_id.split("/")[-1].replace('?', '')
+        return id        
+        
+
 
     def extract_restaurant_cuisine(self, soup_content) : 
 
@@ -135,9 +152,9 @@ class Scraper :
 
         offer = ""
         try :
-            offer = soup_content.find("div", attrs={"class":"orderFeeMobile___3-tYC"}).text
+            offer = soup_content.find("div", attrs={"class":"orderFeeContent___HyVYZ"}).text.strip()
         except Exception :
-            offer = ""
+            offer = "Not Found"   
         return offer
 
     def extract_restaurant_image(self, soup_content) : 
