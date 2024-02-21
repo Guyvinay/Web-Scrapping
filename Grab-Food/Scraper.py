@@ -64,6 +64,8 @@ class Scraper :
 
             persist.persistRestorantToJsonFile(extracted_restaurants)
 
+            persist.persistRestorantToGZipFile(restaurant_dictionary)
+
             # print(restaurant_name)
             # print(restaurant_cuisine)
             # print(restaurant_rating)
