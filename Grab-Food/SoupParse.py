@@ -2,13 +2,12 @@ import requests
 from bs4 import BeautifulSoup
 from Constants import HEADERS
 
+
 def runScrapperWithRequests(request_url):
 
     try : 
-
         response = requests.get(request_url, headers=HEADERS)
         return response
-    
     except requests.RequestException as e :
         print(f"Request Failed to {request_url}")
         return

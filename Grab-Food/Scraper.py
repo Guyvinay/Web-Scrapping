@@ -1,6 +1,5 @@
 from SoupParse import parseContentWithBeautifulSoup, runScrapperWithRequests
 from Constants import BASE_URL
-from Restaurant import Restaurant
 from Persist import Persist
 
 class Scraper :
@@ -60,11 +59,14 @@ class Scraper :
 
             # restaurant_instance = Restaurant("", restaurant_name, restaurant_cuisine, restaurant_rating, delivery_time, distance_from_location, "promotional_offers", "restaurant_image")
 
+            print(restaurant_dictionary)
+            print()
+
             extracted_restaurants.append(restaurant_dictionary)
 
             persist.persistRestorantToJsonFile(extracted_restaurants)
 
-            persist.persistRestorantToGZipFile(restaurant_dictionary)
+        persist.persistRestorantToGZipFile(extracted_restaurants)
 
             # print(restaurant_name)
             # print(restaurant_cuisine)
