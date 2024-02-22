@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from Constants import HEADERS
 
-
+#Sending request to specified url to get response
 def runScrapperWithRequests(request_url):
 
     try : 
@@ -11,7 +11,8 @@ def runScrapperWithRequests(request_url):
     except requests.RequestException as e :
         print(f"Request Failed to {request_url}")
         return
-
+    
+#Parsing the response with BeautifulSoupe    
 def parseContentWithBeautifulSoup(toBeParsed):
 
     try :
