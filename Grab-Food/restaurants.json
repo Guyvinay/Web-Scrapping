@@ -40,21 +40,21 @@
         "restaurant_image": "restaurant_image"
     },
     {
-        "id": "4-C6CHAK2DVKBDLJ",
-        "restaurant_name": "Bombay Kitchen - Indian And Mexican Cuisine - Boat Quay",
-        "restaurant_cuisine": "Indian,Mexican,Vegetarian Friendly,Alcohol",
-        "restaurant_rating": "Rating Not Found",
-        "distance_from_location": "1.4 km",
-        "delivery_time": "35 mins",
-        "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
-        "restaurant_image": "restaurant_image"
-    },
-    {
         "id": "4-C4EUGJ4GTREJEJ",
         "restaurant_name": "Grains & Co. - One Raffles Place",
         "restaurant_cuisine": "Healthy,Bento,Breakfast & Brunch,Salad",
         "restaurant_rating": "4.7",
         "distance_from_location": "1.6 km",
+        "delivery_time": "40 mins",
+        "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
+        "restaurant_image": "restaurant_image"
+    },
+    {
+        "id": "4-C6CHAK2DVKBDLJ",
+        "restaurant_name": "Bombay Kitchen - Indian And Mexican Cuisine - Boat Quay",
+        "restaurant_cuisine": "Indian,Mexican,Vegetarian Friendly,Alcohol",
+        "restaurant_rating": "Rating Not Found",
+        "distance_from_location": "1.4 km",
         "delivery_time": "35 mins",
         "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
         "restaurant_image": "restaurant_image"
@@ -67,16 +67,6 @@
         "distance_from_location": "0.5 km",
         "delivery_time": "30 mins",
         "promotional_offers": "For orders less than S$12.00 for this restaurant, a small order fee applies.",
-        "restaurant_image": "restaurant_image"
-    },
-    {
-        "id": "SGDD08664",
-        "restaurant_name": "Ricciotti - The Riverwalk",
-        "restaurant_cuisine": "Pasta,Pizza,Italian",
-        "restaurant_rating": "3.4",
-        "distance_from_location": "1.2 km",
-        "delivery_time": "35 mins",
-        "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
         "restaurant_image": "restaurant_image"
     },
     {
@@ -94,9 +84,19 @@
         "restaurant_name": "uMart@BoatQuay - Lorong Telok",
         "restaurant_cuisine": "Alcohol,Snacks,Groceries,Convenience,Drinks & Beverages",
         "restaurant_rating": "4.8",
-        "distance_from_location": "1.3 km",
+        "distance_from_location": "1.4 km",
         "delivery_time": "30 mins",
         "promotional_offers": "For orders less than S$12.00 for this store, a small order fee applies.",
+        "restaurant_image": "restaurant_image"
+    },
+    {
+        "id": "SGDD08664",
+        "restaurant_name": "Ricciotti - The Riverwalk",
+        "restaurant_cuisine": "Pasta,Pizza,Italian",
+        "restaurant_rating": "3.4",
+        "distance_from_location": "1.3 km",
+        "delivery_time": "35 mins",
+        "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
         "restaurant_image": "restaurant_image"
     },
     {
@@ -110,12 +110,22 @@
         "restaurant_image": "restaurant_image"
     },
     {
+        "id": "4-C2CUKAU3SGNYTE",
+        "restaurant_name": "CHICHA San Chen - Change Alley",
+        "restaurant_cuisine": "Drinks & Beverages,Coffee & Tea,Bubble Tea,Group Friendly",
+        "restaurant_rating": "4.5",
+        "distance_from_location": "1.8 km",
+        "delivery_time": "50 mins",
+        "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
+        "restaurant_image": "restaurant_image"
+    },
+    {
         "id": "4-C3LFA2NHGJ2BAN",
         "restaurant_name": "espresso.doc - Chan Brother @ 68",
         "restaurant_cuisine": "Pizza,Sandwiches,Breakfast,Coffee,Juice",
         "restaurant_rating": "4.5",
         "distance_from_location": "1.2 km",
-        "delivery_time": "35 mins",
+        "delivery_time": "70 mins",
         "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
         "restaurant_image": "restaurant_image"
     },
@@ -124,39 +134,9 @@
         "restaurant_name": "Ha Jun Korean - CIMB Plaza",
         "restaurant_cuisine": "Japanese,Korean,Bento",
         "restaurant_rating": "5",
-        "distance_from_location": "1.8 km",
+        "distance_from_location": "1.9 km",
         "delivery_time": "40 mins",
         "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
-        "restaurant_image": "restaurant_image"
-    },
-    {
-        "id": "4-C2CUKAU3SGNYTE",
-        "restaurant_name": "CHICHA San Chen - Change Alley",
-        "restaurant_cuisine": "Drinks & Beverages,Coffee & Tea,Bubble Tea,Group Friendly",
-        "restaurant_rating": "4.5",
-        "distance_from_location": "1.7 km",
-        "delivery_time": "50 mins",
-        "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
-        "restaurant_image": "restaurant_image"
-    },
-    {
-        "id": "4-C6AFLYKZANBBLN",
-        "restaurant_name": "Sing Swee Kee Chicken Rice X Raffles Coffee - North Bridge Road",
-        "restaurant_cuisine": "Local & Malaysian,Coffee & Tea,Drinks & Beverages",
-        "restaurant_rating": "Rating Not Found",
-        "distance_from_location": "0.5 km",
-        "delivery_time": "30 mins",
-        "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
-        "restaurant_image": "restaurant_image"
-    },
-    {
-        "id": "4-C6A1LB6FTEDXHA",
-        "restaurant_name": "luckin coffee - Royal Group Building",
-        "restaurant_cuisine": "Bakery & Cake,Breakfast & Brunch,Coffee & Tea,Dessert,Drinks & Beverages",
-        "restaurant_rating": "Rating Not Found",
-        "distance_from_location": "2.4 km",
-        "delivery_time": "35 mins",
-        "promotional_offers": "For orders less than S$12.00 for this restaurant, a small order fee applies.",
         "restaurant_image": "restaurant_image"
     },
     {
@@ -164,7 +144,7 @@
         "restaurant_name": "Kaayaloram Kerala Restaurant - Boat Quay",
         "restaurant_cuisine": "Local & Malaysian,Indian,Vegetarian Friendly",
         "restaurant_rating": "4",
-        "distance_from_location": "1.3 km",
+        "distance_from_location": "1.4 km",
         "delivery_time": "30 mins",
         "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
         "restaurant_image": "restaurant_image"
@@ -180,13 +160,23 @@
         "restaurant_image": "restaurant_image"
     },
     {
-        "id": "SGDD00657",
-        "restaurant_name": "Kinara - Boat Quay",
-        "restaurant_cuisine": "Indian,Vegetarian,Seafood,Salad,Drinks & Beverages",
-        "restaurant_rating": "3.9",
-        "distance_from_location": "1.5 km",
-        "delivery_time": "30 mins",
+        "id": "4-C6AFLYKZANBBLN",
+        "restaurant_name": "Sing Swee Kee Chicken Rice X Raffles Coffee - North Bridge Road",
+        "restaurant_cuisine": "Local & Malaysian,Coffee & Tea,Drinks & Beverages",
+        "restaurant_rating": "Rating Not Found",
+        "distance_from_location": "0.5 km",
+        "delivery_time": "45 mins",
         "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
+        "restaurant_image": "restaurant_image"
+    },
+    {
+        "id": "4-C6A1LB6FTEDXHA",
+        "restaurant_name": "luckin coffee - Royal Group Building",
+        "restaurant_cuisine": "Bakery & Cake,Breakfast & Brunch,Coffee & Tea,Dessert,Drinks & Beverages",
+        "restaurant_rating": "Rating Not Found",
+        "distance_from_location": "2.5 km",
+        "delivery_time": "35 mins",
+        "promotional_offers": "For orders less than S$12.00 for this restaurant, a small order fee applies.",
         "restaurant_image": "restaurant_image"
     },
     {
@@ -194,8 +184,38 @@
         "restaurant_name": "The Salad Shop - UOB Plaza 2",
         "restaurant_cuisine": "Vegetarian Friendly,Salad,Healthy,Vegan,Group Friendly",
         "restaurant_rating": "4.5",
-        "distance_from_location": "1.6 km",
+        "distance_from_location": "1.5 km",
+        "delivery_time": "70 mins",
+        "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
+        "restaurant_image": "restaurant_image"
+    },
+    {
+        "id": "4-C6BDSCEYT4BZGX",
+        "restaurant_name": "Al-Zamas River Valley Pte. Ltd. - Circular Road",
+        "restaurant_cuisine": "Indian,BBQ & Grill,Drinks & Beverages",
+        "restaurant_rating": "2.8",
+        "distance_from_location": "1.4 km",
         "delivery_time": "35 mins",
+        "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
+        "restaurant_image": "restaurant_image"
+    },
+    {
+        "id": "SGDD03136",
+        "restaurant_name": "Urban Mix - One Raffles Place",
+        "restaurant_cuisine": "Mexican,Salad,Vegetarian,Healthy,Group Friendly",
+        "restaurant_rating": "4.6",
+        "distance_from_location": "1.7 km",
+        "delivery_time": "35 mins",
+        "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
+        "restaurant_image": "restaurant_image"
+    },
+    {
+        "id": "SGDD00657",
+        "restaurant_name": "Kinara - Boat Quay",
+        "restaurant_cuisine": "Indian,Vegetarian,Seafood,Salad,Drinks & Beverages",
+        "restaurant_rating": "3.9",
+        "distance_from_location": "1.5 km",
+        "delivery_time": "30 mins",
         "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
         "restaurant_image": "restaurant_image"
     },
@@ -210,22 +230,12 @@
         "restaurant_image": "restaurant_image"
     },
     {
-        "id": "SGDD03136",
-        "restaurant_name": "Urban Mix - One Raffles Place",
-        "restaurant_cuisine": "Mexican,Salad,Vegetarian,Healthy,Group Friendly",
-        "restaurant_rating": "4.6",
-        "distance_from_location": "1.6 km",
-        "delivery_time": "35 mins",
-        "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
-        "restaurant_image": "restaurant_image"
-    },
-    {
         "id": "4-C4NBG6U3LPVKKA",
         "restaurant_name": "Shimmer Healthy Bowl By Popular Food - One Raffles Place",
         "restaurant_cuisine": "Breakfast & Brunch,Healthy,Salad,Local & Malaysian",
         "restaurant_rating": "3.2",
         "distance_from_location": "1.6 km",
-        "delivery_time": "45 mins",
+        "delivery_time": "40 mins",
         "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
         "restaurant_image": "restaurant_image"
     },
@@ -264,7 +274,7 @@
         "restaurant_name": "Harry's - Boat Quay",
         "restaurant_cuisine": "Western,Burgers,Alcohol",
         "restaurant_rating": "3.8",
-        "distance_from_location": "1.7 km",
+        "distance_from_location": "1.6 km",
         "delivery_time": "35 mins",
         "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
         "restaurant_image": "restaurant_image"
@@ -285,38 +295,28 @@
         "restaurant_cuisine": "Noodles,Chinese,Local & Malaysian",
         "restaurant_rating": "4.6",
         "distance_from_location": "1.4 km",
-        "delivery_time": "35 mins",
-        "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
-        "restaurant_image": "restaurant_image"
-    },
-    {
-        "id": "SGDD11568",
-        "restaurant_name": "The Soup Spoon - Raffles Xchange",
-        "restaurant_cuisine": "Soup,Western,Vegetarian Friendly,Healthy,Halal",
-        "restaurant_rating": "4.4",
-        "distance_from_location": "1.6 km",
-        "delivery_time": "35 mins",
+        "delivery_time": "70 mins",
         "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
         "restaurant_image": "restaurant_image"
     },
     {
         "id": "4-CZCUCRKVCAMYVA",
-        "restaurant_name": "Souperstar - One Raffles Place",
-        "restaurant_cuisine": "Salad",
-        "restaurant_rating": "4.7",
-        "distance_from_location": "1.6 km",
-        "delivery_time": "30 mins",
-        "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
+        "restaurant_name": "Name Not Found",
+        "restaurant_cuisine": "Cuisine Not Found",
+        "restaurant_rating": "Rating Not Found",
+        "distance_from_location": "Distance Not Found",
+        "delivery_time": "Delivery Time Not found",
+        "promotional_offers": "Offer Not Found",
         "restaurant_image": "restaurant_image"
     },
     {
-        "id": "4-C2BTTP4CCX6VGT",
-        "restaurant_name": "Poke Theory - Change Alley Mall",
-        "restaurant_cuisine": "Salad,Healthy,Vegan,Halal,Group Friendly",
-        "restaurant_rating": "4.4",
-        "distance_from_location": "1.7 km",
-        "delivery_time": "40 mins",
-        "promotional_offers": "For orders less than S$10.00 for this restaurant, a small order fee applies.",
+        "id": "SGDD11568",
+        "restaurant_name": "Name Not Found",
+        "restaurant_cuisine": "Cuisine Not Found",
+        "restaurant_rating": "Rating Not Found",
+        "distance_from_location": "Distance Not Found",
+        "delivery_time": "Delivery Time Not found",
+        "promotional_offers": "Offer Not Found",
         "restaurant_image": "restaurant_image"
     }
 ]
