@@ -1,0 +1,22 @@
+# Food-Grab
+
+Food-Grab is a web scraping application designed to extract food-related data from specified URLs. It provides functionalities to scrape data, persist it into gzip and JSON files, and parse HTML content using Beautiful Soup.
+
+### Scraping Logic
+
+1. **Fetching HTML**: The scraper sends HTTP requests to Grab-Food .
+2. **Parsing HTML**: It uses BeautifulSoup to parse the HTML content and extract relevant information such as restaurant-name, cuisine, rating-delivery-time, offers etc.
+3. **Data Store**: The extracted data is stored in list.
+4. **Data Persist**: The scraped data persistedto required file, here persist to json and gzip files.
+
+### Code Structure
+-Grab-Food->
+- **`Scraper.py`**: Main class containing the scraping logic.
+- **`SoupParse.py`**: Utility functions for HTTP requests, data parsing, and logging.
+- **`Constants.py`**: Constants such as URLs, Headers.
+- **`Restaurant.py`**: Classe to represent scraped data entities.
+- **`main.py`**: Entry point to initiate the scraping process.
+- **`Persist.py`**: To persist the scrapped restaurant data to JSON and Gzip files.
+
+
+Github:  https://github.com/Guyvinay/Web-Scrapping.
